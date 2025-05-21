@@ -3,3 +3,26 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+:root {
+	--text-color: #ffffff;
+	--accent-color: #2892de;
+	--dark-bg: #121212;
+	--transition-speed: 0.4s;
+}
+
+body {
+	background-color: var(--dark-bg);
+	font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+	overflow-x: hidden;
+}
+
+/* Locomotive Scroll cursor styles */
+[data-scroll-container] {
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+[data-scroll-section] {
+	position: relative;
+}

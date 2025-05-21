@@ -1,0 +1,290 @@
+/* ------------------------ */
+/*  Intro Component Styles  */
+/* ------------------------ */
+
+.homeHeader {
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	height: 140vh;
+}
+
+.backgroundImage {
+	width: 100%;
+	height: 140vh;
+	position: absolute;
+	filter: brightness(60%);
+	transition: filter 0.5s ease;
+}
+
+.backgroundImage:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 30%;
+	background: linear-gradient(to top, var(--dark-bg), transparent);
+	z-index: 1;
+}
+
+.backgroundImage img {
+	object-fit: cover;
+	will-change: transform;
+}
+
+.intro {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	margin-top: 35vh;
+	z-index: 2;
+}
+
+.intro h1 {
+	color: var(--text-color);
+	font-size: 7vw;
+	z-index: 3;
+	text-align: center;
+	white-space: nowrap;
+	margin: 0;
+	letter-spacing: 2px;
+	font-weight: 800;
+	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+	will-change: transform, opacity;
+	transition: transform var(--transition-speed) ease;
+}
+
+.introImage {
+	filter: brightness(70%) contrast(110%);
+	width: 350px;
+	height: 475px;
+	position: absolute;
+	overflow: hidden;
+	border-radius: 4px;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+	will-change: transform, height;
+	transition: filter 0.3s ease;
+}
+
+.introImage:hover {
+	filter: brightness(80%) contrast(115%);
+}
+
+.introImage img {
+	object-fit: cover;
+	object-position: top;
+	will-change: transform;
+}
+
+/* ------------------------------ */
+/*  Description Component Styles  */
+/* ------------------------------ */
+
+.description {
+	position: relative;
+	color: var(--text-color);
+	font-size: 3vw;
+	text-transform: uppercase;
+	margin-top: 30vw;
+	margin-left: 10vw;
+	z-index: 2;
+}
+
+.description p {
+	margin: 0;
+	position: relative;
+	line-height: 1.4;
+	font-weight: 600;
+	will-change: transform, opacity;
+	transition: color 0.3s ease;
+}
+
+.description p:hover {
+	color: var(--accent-color);
+}
+
+/* --------------------------- */
+/*  Project Component Styles   */
+/* --------------------------- */
+
+.projects {
+	position: relative;
+	color: var(--text-color);
+	margin-top: 25vh;
+	padding: 10%;
+	z-index: 3;
+}
+
+.projectDescription {
+	display: flex;
+	height: 700px;
+	justify-content: space-between;
+	gap: 5%;
+}
+
+.imageContainer {
+	position: relative;
+	height: 100%;
+	width: 40%;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+	transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.imageContainer:hover {
+	transform: scale(1.02);
+}
+
+.imageContainer img {
+	object-fit: cover;
+	transition: transform 0.7s ease;
+}
+
+.imageContainer:hover img {
+	transform: scale(1.05);
+}
+
+.column {
+	display: flex;
+	height: 100%;
+	width: 20%;
+	font-size: 1.6vw;
+}
+
+.column p {
+	opacity: 0.9;
+	line-height: 1.6;
+	will-change: transform;
+}
+
+.column:last-of-type {
+	align-items: flex-end;
+	font-size: 1vw;
+}
+
+.projectList {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin-top: 200px;
+}
+
+.projectEl {
+	width: 100%;
+	color: var(--text-color);
+	text-transform: uppercase;
+	font-size: 3vw;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	display: flex;
+	justify-content: flex-end;
+	transition: border-color 0.3s ease, transform 0.3s ease;
+	will-change: transform, color;
+}
+
+.projectEl:hover {
+	border-color: var(--accent-color);
+	transform: translateX(-10px);
+}
+
+.projectEl h2 {
+	margin: 0;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+	position: relative;
+}
+
+.projectEl h2:after {
+	content: "";
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: var(--accent-color);
+	transition: width 0.3s ease;
+}
+
+.projectEl:hover h2:after {
+	width: 100%;
+}
+
+/* ------------------------ */
+/*    Responsive styles     */
+/* ------------------------ */
+
+@media (max-width: 1200px) {
+	.projectDescription {
+		flex-direction: column;
+		height: auto;
+		gap: 40px;
+	}
+
+	.imageContainer {
+		width: 100%;
+		height: 50vh;
+	}
+
+	.column {
+		width: 100%;
+		font-size: 18px;
+	}
+
+	.column:last-of-type {
+		font-size: 16px;
+	}
+
+	.description {
+		font-size: 5vw;
+		margin-left: 5vw;
+	}
+
+	.projectEl {
+		font-size: 4vw;
+	}
+}
+
+@media (max-width: 768px) {
+	.intro h1 {
+		font-size: 10vw;
+	}
+
+	.introImage {
+		width: 250px;
+		height: 350px;
+	}
+
+	.description {
+		font-size: 6vw;
+	}
+
+	.projectEl {
+		font-size: 5vw;
+	}
+
+	.projects {
+		padding: 5%;
+	}
+}
+
+/* ------------------------ */
+/*    Animation classes     */
+/* ------------------------ */
+.fadeIn {
+	animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

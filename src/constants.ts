@@ -24,3 +24,22 @@ export const PROJECTS = [
 		color: "#706D63",
 	},
 ];
+
+export const PROJECTS_2 = [
+	{
+		title: "Salar de Atacama",
+		src: "salar_de_atacama.jpg",
+	},
+	{
+		title: "Valle de la luna",
+		src: "valle_de_la_muerte.jpeg",
+	},
+	{
+		title: "Miscanti Lake",
+		src: "miscani_lake.jpeg",
+	},
+	{
+		title: "Miniques Lagoons",
+		src: "miniques_lagoon.jpg",
+	},
+];

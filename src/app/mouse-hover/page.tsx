@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { PROJECTS } from "../constants";
+import { PROJECTS } from "../../constants";
 import styles from "../page.module.css";
 import Project from "@/components/project";
 import Modal from "@/components/modal";

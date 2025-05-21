@@ -5,6 +5,7 @@ export default function Home() {
 	const projects = [
 		{ id: 1, title: "Mouse Hover Project Gallery", link: "/mouse-hover" },
 		{ id: 2, title: "Infinite Text Move on Scroll", link: "/infinite-text" },
+		{ id: 3, title: "Smooth Scroll", link: "/smooth-scroll" },
 	];
 	return (
 		<div className={style.main}>
