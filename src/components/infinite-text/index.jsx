@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/all";
 import style from "./style.module.css";
 import Image from "next/image";
@@ -9,13 +9,20 @@ const InfiniteText = () => {
 	const firstText = useRef(null);
 	const secondText = useRef(null);
 	const slider = useRef(null);
+	const [_, setIsLoaded] = useState(false);
+
 	let xPercent = 0;
 	let direction = -1;
 
 	useEffect(() => {
+		// Register GSAP plugins
 		gsap.registerPlugin(ScrollTrigger);
-		requestAnimationFrame(animate);
-		gsap.to(slider.current, {
+
+		// Start animation loop
+		const animationId = requestAnimationFrame(animate);
+
+		// Set up the scroll trigger for parallax effect
+		const scrollTween = gsap.to(slider.current, {
 			scrollTrigger: {
 				trigger: document.documentElement,
 				scrub: 0.25,
@@ -25,28 +32,54 @@ const InfiniteText = () => {
 			},
 			x: "-300px",
 		});
+
+		setIsLoaded(true);
+
+		// Cleanup function
+		return () => {
+			cancelAnimationFrame(animationId);
+			scrollTween.kill();
+			ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+		};
 	}, []);
 
 	const animate = () => {
+		// Reset position when reaching thresholds
 		if (xPercent < -100) {
 			xPercent = 0;
 		} else if (xPercent > 0) {
 			xPercent = -100;
 		}
-		gsap.set(firstText.current, { xPercent });
-		gsap.set(secondText.current, { xPercent });
+
+		// Update positions
+		if (firstText.current && secondText.current) {
+			gsap.set(firstText.current, { xPercent });
+			gsap.set(secondText.current, { xPercent });
+		}
+
+		// Continue animation loop
 		requestAnimationFrame(animate);
+
+		// Increment position based on direction
 		xPercent += 0.1 * direction;
 	};
 	return (
 		<main className={style.main}>
-			<Image fill src={"/images/officestudio.png"} alt="Background" />
+			<Image
+				fill
+				src="/images/officestudio.png"
+				alt="Office Studio Background"
+				priority
+				className={style.background_image}
+				onLoad={() => setIsLoaded(true)}
+			/>
 			<div className={style.slider_container}>
 				<div className={style.slider}>
 					<p ref={firstText}>Freelance Developer -</p>
 					<p ref={secondText}>Freelance Developer -</p>
 				</div>
 			</div>
+			<div className={style.overlay} />
 		</main>
 	);
 };
