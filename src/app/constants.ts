@@ -1,4 +1,4 @@
-export const PROECTS = [
+export const PROJECTS = [
 	{
 		title: "C2 Montreal",
 		description: "Immersive brand experience for a global innovation.",

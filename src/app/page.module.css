@@ -3,6 +3,7 @@
 	height: 100vh;
 	align-items: center;
 	justify-content: center;
+	background-color: #f9fafb;
 }
 
 .body {
@@ -13,35 +14,155 @@
 	justify-content: center;
 }
 
+.title {
+	font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+		sans-serif;
+	font-size: 2.5rem;
+	font-weight: 700;
+	color: #1f2937;
+	margin-bottom: 0.5rem;
+	text-align: center;
+}
+
+.description {
+	font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+		sans-serif;
+	font-size: 1.125rem;
+	color: #6b7280;
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
 .container {
-	width: 50%;
+	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	margin: auto;
+	margin: 1rem auto 3rem;
 }
+
 /* TABLE STYLES */
 .wrapper {
-	padding: 2rem;
-	font-family: Arial, sans-serif;
+	padding: 2.5rem;
+	font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+		sans-serif;
+	background-color: #f8f9fa;
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
+
 .custom_table {
 	width: 100%;
-	border-collapse: collapse;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	border-radius: 8px;
+	border-collapse: separate;
+	border-spacing: 0;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+	border-radius: 10px;
 	overflow: hidden;
+	background-color: white;
 }
+
 .custom_table th,
 .custom_table td {
-	padding: 14px 20px;
-	border: 1px solid #ddd;
+	padding: 18px 24px;
+	border: none;
 	text-align: left;
 }
+
 .custom_table th {
-	background-color: #f0f0f0;
-	font-weight: bold;
+	background-color: #f1f5f9;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-size: 14px;
+	color: #475569;
 }
+
+.custom_table tr:not(:last-child) td {
+	border-bottom: 1px solid #edf2f7;
+}
+
 .custom_table tr:hover {
-	background-color: #f9f9f9;
+	background-color: #fafbff;
+}
+
+.table_link {
+	display: inline-flex;
+	align-items: center;
+	color: #3b82f6;
+	font-weight: 500;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	padding: 8px 16px;
+	border-radius: 6px;
+	background-color: #ebf4ff;
+}
+
+.table_link:hover {
+	background-color: #dbeafe;
+	color: #1d4ed8;
+}
+
+.arrow_icon {
+	margin-left: 6px;
+	transition: transform 0.2s ease;
+}
+
+.table_link:hover .arrow_icon {
+	transform: translateX(3px);
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+	.main {
+		padding: 1rem;
+		height: auto;
+		min-height: 100vh;
+	}
+
+	.body {
+		width: 100%;
+	}
+
+	.title {
+		font-size: 2rem;
+	}
+
+	.container {
+		width: 100%;
+		margin: 1rem auto;
+	}
+
+	.wrapper {
+		padding: 1.5rem;
+	}
+
+	.custom_table th,
+	.custom_table td {
+		padding: 14px 16px;
+	}
+}
+
+/* For very small devices */
+@media (max-width: 480px) {
+	.title {
+		font-size: 1.75rem;
+	}
+
+	.description {
+		font-size: 1rem;
+	}
+
+	.wrapper {
+		padding: 1rem;
+	}
+
+	.custom_table th,
+	.custom_table td {
+		padding: 12px;
+	}
+
+	.table_link {
+		padding: 6px 12px;
+		font-size: 0.875rem;
+	}
 }
