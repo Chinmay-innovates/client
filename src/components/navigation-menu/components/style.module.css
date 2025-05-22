@@ -25,6 +25,7 @@
 		font-size: 12px;
 		font-weight: 400;
 		position: relative;
+		align-items: center;
 
 		p {
 			margin: 0px;
@@ -35,6 +36,12 @@
 			color: black;
 			position: absolute;
 			left: 0;
+			font-weight: 600;
+			letter-spacing: 0.5px;
+			transition: color 0.3s ease;
+		}
+		&:hover {
+			color: #9f9689;
 		}
 
 		.shopContainer {
@@ -42,9 +49,12 @@
 			gap: 30px;
 			position: absolute;
 			right: 0;
+			align-items: center;
 
 			.shop {
 				display: none;
+				cursor: pointer;
+				transition: color 0.3s ease;
 			}
 		}
 
@@ -54,6 +64,23 @@
 			justify-content: center;
 			gap: 8px;
 			cursor: pointer;
+			padding: 8px;
+			border-radius: 6px;
+			transition: background-color 0.2s ease;
+			background: none;
+			border: none;
+			font-family: inherit;
+			font-size: inherit;
+			color: inherit;
+
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.05);
+			}
+
+			&:focus {
+				outline: 2px solid #6b5b4f;
+				outline-offset: 2px;
+			}
 
 			.label {
 				position: relative;

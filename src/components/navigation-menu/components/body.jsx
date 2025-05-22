@@ -35,6 +35,8 @@ const body = ({ links, selectedLink, setSelectedLink }) => {
 						<motion.p
 							onMouseEnter={() => activate(true)}
 							onMouseLeave={() => activate(false)}
+							onFocus={() => activate(true, index)}
+							onBlur={() => activate(false, index)}
 							variants={blur}
 							animate={
 								selectedLink.isActive && selectedLink.index != index
