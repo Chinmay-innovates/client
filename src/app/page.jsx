@@ -29,6 +29,12 @@ const PROJECTS_DATA = [
 		link: "/menu/navigation-menu",
 		category: "menu",
 	},
+	{
+		id: 5,
+		title: "Mouse Scale Image Gallery",
+		link: "/cursor/mouse-scale-image-gallery",
+		category: "cursor",
+	},
 ];
 
 const SearchIcon = memo(() => (
