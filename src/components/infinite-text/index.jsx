@@ -5,7 +5,7 @@ import style from "./style.module.css";
 import Image from "next/image";
 import gsap from "gsap";
 
-const InfiniteText = () => {
+export const InfiniteText = () => {
 	const firstText = useRef(null);
 	const secondText = useRef(null);
 	const slider = useRef(null);
@@ -83,4 +83,3 @@ const InfiniteText = () => {
 		</main>
 	);
 };
-export default InfiniteText;

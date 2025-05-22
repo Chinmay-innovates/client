@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from "react";
-import { PROJECTS } from "../../constants";
-import styles from "../page.module.css";
+import { PROJECTS } from "@/constants";
 import Project from "@/components/project";
 import Modal from "@/components/modal";
+import styles from "./style.module.css";
+import { useState } from "react";
 
-const page = () => {
+export const ProjectGalleryMouseHover = () => {
 	const [modal, setModal] = useState({ active: false, index: 0 });
 
 	return (
@@ -25,5 +25,3 @@ const page = () => {
 		</main>
 	);
 };
-
-export default page;

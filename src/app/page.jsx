@@ -3,9 +3,17 @@ import style from "./page.module.css";
 
 export default function Home() {
 	const projects = [
-		{ id: 1, title: "Mouse Hover Project Gallery", link: "/mouse-hover" },
-		{ id: 2, title: "Infinite Text Move on Scroll", link: "/infinite-text" },
-		{ id: 3, title: "Smooth Scroll", link: "/smooth-scroll" },
+		{
+			id: 1,
+			title: "Project Gallery Mouse Hover",
+			link: "/animation/project-gallery-mouse-hover",
+		},
+		{
+			id: 2,
+			title: "Infinite Text Move on Scroll",
+			link: "/scroll/infinite-text-move-on-scroll",
+		},
+		{ id: 3, title: "Smooth Scroll", link: "/scroll/smooth-scroll" },
 	];
 	return (
 		<div className={style.main}>
