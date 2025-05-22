@@ -14,6 +14,7 @@ export default function Home() {
 			link: "/scroll/infinite-text-move-on-scroll",
 		},
 		{ id: 3, title: "Smooth Scroll", link: "/scroll/smooth-scroll" },
+		{ id: 4, title: "Navigation Menu", link: "/menu/navigation-menu" },
 	];
 	return (
 		<div className={style.main}>
