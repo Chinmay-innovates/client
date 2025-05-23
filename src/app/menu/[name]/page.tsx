@@ -1,4 +1,5 @@
 import NavigationMenu from "@/components/navigation-menu";
+import CurvedMenu from "@/components/curved-menu";	
 interface Props {
 	params: Promise<{
 		name: string;
@@ -9,6 +10,10 @@ const page = async ({ params }: Props) => {
 
 	if (name === "navigation-menu") {
 		return <NavigationMenu />;
+	}
+
+	if (name === "curved-menu") {
+		return <CurvedMenu />;
 	}
 
 	return (

@@ -12,7 +12,7 @@ const PROJECTS_DATA = [
 		category: "animation",
 		description: "Interactive gallery with smooth mouse hover effects",
 		difficulty: "Advanced",
-		tech: ["Framer Motion", "CSS Animations"],
+		tech: ["Framer Motion", "GSAP", "CSS Animations"],
 	},
 	{
 		id: 2,
@@ -56,8 +56,8 @@ const PROJECTS_DATA = [
 		link: "/menu/curved-menu",
 		category: "menu",
 		description: "Elegant curved menu with fluid animations",
-		difficulty: "Advanced",
-		tech: ["SVG", "CSS Animations"],
+		difficulty: "Intermediate",
+		tech: ["SVG", "Framer Motion"],
 	},
 ];
 

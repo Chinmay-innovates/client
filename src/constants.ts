@@ -134,3 +134,22 @@ export const PROJECTS_3 = [
 		year: 2020,
 	},
 ];
+
+export const navItems = [
+	{
+		title: "Home",
+		href: "/",
+	},
+	{
+		title: "Work",
+		href: "/work",
+	},
+	{
+		title: "About",
+		href: "/about",
+	},
+	{
+		title: "Contact",
+		href: "/contact",
+	},
+];
