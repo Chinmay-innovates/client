@@ -35,7 +35,15 @@ const PROJECTS_DATA = [
 		link: "/cursor/mouse-scale-image-gallery",
 		category: "cursor",
 	},
+	{
+		id: 6,
+		title: "Curved menu",
+		link: "/menu/curved-menu",
+		category: "menu",
+	},
 ];
+
+const ITEMS_PER_PAGE = 4;
 
 const SearchIcon = memo(() => (
 	<svg
@@ -229,24 +237,41 @@ NoResults.displayName = "NoResults";
 export default function Home() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [sortOrder, setSortOrder] = useState("asc");
+	const [selectedCategory, setSelectedCategory] = useState("");
+	const [currentPage, setCurrentPage] = useState(1);
+
+	const categories = useMemo(() => {
+		return [...new Set(PROJECTS_DATA.map((p) => p.category))];
+	}, []);
+
+	const handleCategoryChange = useCallback((e) => {
+		setSelectedCategory(e.target.value);
+		setCurrentPage(1);
+	}, []);
 
 	const filteredAndSortedProjects = useMemo(() => {
-		if (!searchTerm && sortOrder === "asc") {
-			return PROJECTS_DATA;
+		let filtered = PROJECTS_DATA;
+
+		if (searchTerm) {
+			filtered = filtered.filter((project) =>
+				project.title.toLowerCase().includes(searchTerm.toLowerCase())
+			);
 		}
 
-		let filtered = searchTerm
-			? PROJECTS_DATA.filter((project) =>
-					project.title.toLowerCase().includes(searchTerm.toLowerCase())
-			  )
-			: PROJECTS_DATA;
+		if (selectedCategory) {
+			filtered = filtered.filter(
+				(project) => project.category === selectedCategory
+			);
+		}
 
 		if (sortOrder === "desc") {
-			return [...filtered].sort((a, b) => b.title.localeCompare(a.title));
+			filtered = [...filtered].sort((a, b) => b.title.localeCompare(a.title));
+		} else {
+			filtered = [...filtered].sort((a, b) => a.title.localeCompare(b.title));
 		}
 
-		return [...filtered].sort((a, b) => a.title.localeCompare(b.title));
-	}, [searchTerm, sortOrder]);
+		return filtered;
+	}, [searchTerm, sortOrder, selectedCategory]);
 
 	const handleSort = useCallback(() => {
 		setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
@@ -259,6 +284,11 @@ export default function Home() {
 	const handleClearSearch = useCallback(() => {
 		setSearchTerm("");
 	}, []);
+
+	const paginatedProjects = useMemo(() => {
+		const start = (currentPage - 1) * ITEMS_PER_PAGE;
+		return filteredAndSortedProjects.slice(start, start + ITEMS_PER_PAGE);
+	}, [filteredAndSortedProjects, currentPage]);
 
 	return (
 		<div className={style.main}>
@@ -279,6 +309,19 @@ export default function Home() {
 								onSearchChange={handleSearchChange}
 								onClearSearch={handleClearSearch}
 							/>
+							<div className={style.category_select}>
+								<select
+									value={selectedCategory}
+									onChange={handleCategoryChange}
+								>
+									<option value="">All Categories</option>
+									{categories.map((category) => (
+										<option key={category} value={category}>
+											{category.charAt(0).toUpperCase() + category.slice(1)}
+										</option>
+									))}
+								</select>
+							</div>
 							<ResultsInfo
 								searchTerm={searchTerm}
 								filteredCount={filteredAndSortedProjects.length}
@@ -297,8 +340,8 @@ export default function Home() {
 								</tr>
 							</thead>
 							<tbody>
-								{filteredAndSortedProjects.length > 0 ? (
-									filteredAndSortedProjects.map((project) => (
+								{paginatedProjects.length > 0 ? (
+									paginatedProjects.map((project) => (
 										<Project
 											key={project.id}
 											title={project.title}
@@ -310,6 +353,24 @@ export default function Home() {
 								)}
 							</tbody>
 						</table>
+						<div className={style.pagination}>
+							<button
+								disabled={currentPage === 1}
+								onClick={() => setCurrentPage((p) => p - 1)}
+							>
+								Previous
+							</button>
+							<span>Page {currentPage}</span>
+							<button
+								disabled={
+									currentPage * ITEMS_PER_PAGE >=
+									filteredAndSortedProjects.length
+								}
+								onClick={() => setCurrentPage((p) => p + 1)}
+							>
+								Next
+							</button>
+						</div>
 					</div>
 				</main>
 			</div>

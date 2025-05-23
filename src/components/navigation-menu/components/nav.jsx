@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import styles from "./style.module.css";
-import { height, stagger } from "./animation";
+import { height } from "./animation";
 import Image from "./image";
 import Body from "./body";
 import Footer from "./footer";

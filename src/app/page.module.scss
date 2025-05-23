@@ -293,8 +293,59 @@ $color-table-hover: #fafbff;
 	.arrow_icon {
 		margin-left: 6px;
 		@include transition(transform);
-		display: flex;
+		display: inline-flex;
 		align-items: center;
+		svg {
+			width: 16px;
+			height: 16px;
+			fill: $color-accent;
+		}
+	}
+}
+
+.category_select {
+	select {
+		padding: 10px 14px;
+		border: 1px solid $color-border;
+		border-radius: 8px;
+		background-color: white;
+		font-size: 14px;
+		font-family: inherit;
+		color: $color-text;
+		@include transition();
+		@include focus-ring();
+
+		&:hover {
+			background-color: $color-hover;
+		}
+	}
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2rem;
+	gap: 1rem;
+
+	button {
+		padding: 0.5rem 1rem;
+		border: 1px solid $color-border;
+		border-radius: 6px;
+		background-color: white;
+		cursor: pointer;
+		font-size: 14px;
+		font-weight: 500;
+		@include transition();
+
+		&:hover:not(:disabled) {
+			background-color: $color-hover;
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
+		}
 	}
 }
 
