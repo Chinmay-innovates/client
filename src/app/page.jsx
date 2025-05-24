@@ -59,6 +59,15 @@ const PROJECTS_DATA = [
 		difficulty: "Intermediate",
 		tech: ["SVG", "Framer Motion"],
 	},
+	{
+		id: 7,
+		title: "Floating Image Gallery",
+		link: "/animation/floating-image-gallery",
+		category: "animation",
+		description: "Interactive image gallery with floating effects",
+		difficulty: "Beginner",
+		tech: ["GSAP", "Request Animation Frame", "LERP"],
+	},
 ];
 
 const ITEMS_PER_PAGE = 6;
@@ -295,14 +304,11 @@ const NoResults = memo(({ searchTerm }) => (
 
 NoResults.displayName = "NoResults";
 
+const categories = [...new Set(PROJECTS_DATA.map((p) => p.category))];
 export default function Home() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-
-	const categories = useMemo(() => {
-		return [...new Set(PROJECTS_DATA.map((p) => p.category))];
-	}, []);
 
 	const handleCategoryChange = useCallback((e) => {
 		setSelectedCategory(e.target.value);
@@ -379,6 +385,10 @@ export default function Home() {
 							<div className={style.stat}>
 								<span className={style.stat_number}>{categories.length}</span>
 								<span className={style.stat_label}>Categories</span>
+							</div>
+							<div className={style.stat}>
+								<span className={style.stat_number}>3</span>
+								<span className={style.stat_label}>Levels</span>
 							</div>
 						</div>
 					</div>

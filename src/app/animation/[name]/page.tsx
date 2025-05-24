@@ -1,4 +1,5 @@
 import { ProjectGalleryMouseHover } from "@/components/project-gallery-mouse-hover";
+import FloatingImageGallery from "@/components/floating-image-gallery";
 
 interface Props {
 	params: Promise<{
@@ -9,6 +10,9 @@ const page = async ({ params }: Props) => {
 	const { name } = await params;
 	if (name === "project-gallery-mouse-hover") {
 		return <ProjectGalleryMouseHover />;
+	}
+	if (name === "floating-image-gallery") {
+		return <FloatingImageGallery />;
 	}
 
 	return (
