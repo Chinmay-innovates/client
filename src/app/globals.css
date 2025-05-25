@@ -13,6 +13,7 @@
 
 body {
 	background-color: var(--dark-bg);
+	color: var(--text-color);
 	font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
 	overflow-x: hidden;
 }
@@ -25,4 +26,19 @@ body {
 
 [data-scroll-section] {
 	position: relative;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	.background_elements > * {
+		animation: none;
+	}
 }
