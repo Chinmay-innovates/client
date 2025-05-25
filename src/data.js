@@ -71,6 +71,16 @@ const PROJECTS_DATA = [
 		difficulty: "Beginner",
 		tech: ["GSAP", "Request Animation Frame", "LERP"],
 	},
+	{
+		id: 8,
+		title: "Mask Cursor Effect",
+		link: "/cursor/mask-cursor-effect",
+		category: "cursor",
+		description:
+			"A custom cursor with a mask hover effect revealing text underneath",
+		difficulty: "Beginner",
+		tech: ["Framer Motion"],
+	},
 ];
 
 export {
