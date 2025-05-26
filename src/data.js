@@ -114,6 +114,15 @@ const PROJECTS_DATA = [
 		difficulty: "Beginner",
 		tech: ["Framer Motion", "CSS Clip Path"],
 	},
+	{
+		id: 11,
+		title: "SVG Morph",
+		link: "/animation/svg-morph",
+		category: "animation",
+		description: "An SVG morphing animation that transforms shapes smoothly",
+		difficulty: "Intermediate",
+		tech: ["Framer Motion", "Flubber.js"],
+	},
 ];
 
 export {

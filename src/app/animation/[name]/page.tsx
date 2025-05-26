@@ -1,5 +1,6 @@
 import { ProjectGalleryMouseHover } from "@/components/project-gallery-mouse-hover";
 import FloatingImageGallery from "@/components/floating-image-gallery";
+import SvgMorph from "@/components/svg-morph";
 
 interface Props {
 	params: Promise<{
@@ -13,6 +14,9 @@ const page = async ({ params }: Props) => {
 	}
 	if (name === "floating-image-gallery") {
 		return <FloatingImageGallery />;
+	}
+	if (name === "svg-morph") {
+		return <SvgMorph />;
 	}
 
 	return (
