@@ -24,7 +24,7 @@ const images = [_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12];
 
 const PROJECTS_DATA = [
 	{
-		id: 1,
+		id: crypto.randomUUID(),
 		title: "Project Gallery Mouse Hover",
 		link: "/animation/project-gallery-mouse-hover",
 		category: "animation",
@@ -33,7 +33,7 @@ const PROJECTS_DATA = [
 		tech: ["Framer Motion", "GSAP", "CSS Animations"],
 	},
 	{
-		id: 2,
+		id: crypto.randomUUID(),
 		title: "Infinite Text Move on Scroll",
 		link: "/scroll/infinite-text-move-on-scroll",
 		category: "scroll",
@@ -42,7 +42,7 @@ const PROJECTS_DATA = [
 		tech: ["JavaScript", "Intersection Observer"],
 	},
 	{
-		id: 3,
+		id: crypto.randomUUID(),
 		title: "Smooth Scroll",
 		link: "/scroll/smooth-scroll",
 		category: "scroll",
@@ -51,7 +51,7 @@ const PROJECTS_DATA = [
 		tech: ["CSS", "JavaScript"],
 	},
 	{
-		id: 4,
+		id: crypto.randomUUID(),
 		title: "Navigation Menu",
 		link: "/menu/navigation-menu",
 		category: "menu",
@@ -60,7 +60,7 @@ const PROJECTS_DATA = [
 		tech: ["React", "Framer Motion"],
 	},
 	{
-		id: 5,
+		id: crypto.randomUUID(),
 		title: "Mouse Scale Image Gallery",
 		link: "/cursor/mouse-scale-image-gallery",
 		category: "cursor",
@@ -69,7 +69,7 @@ const PROJECTS_DATA = [
 		tech: ["Request Animation Frame", "Padding bottom"],
 	},
 	{
-		id: 6,
+		id: crypto.randomUUID(),
 		title: "Curved Menu",
 		link: "/menu/curved-menu",
 		category: "menu",
@@ -78,7 +78,7 @@ const PROJECTS_DATA = [
 		tech: ["SVG", "Framer Motion"],
 	},
 	{
-		id: 7,
+		id: crypto.randomUUID(),
 		title: "Floating Image Gallery",
 		link: "/animation/floating-image-gallery",
 		category: "animation",
@@ -87,7 +87,7 @@ const PROJECTS_DATA = [
 		tech: ["GSAP", "Request Animation Frame", "LERP"],
 	},
 	{
-		id: 8,
+		id: crypto.randomUUID(),
 		title: "Mask Cursor Effect",
 		link: "/cursor/mask-cursor-effect",
 		category: "cursor",
@@ -97,7 +97,7 @@ const PROJECTS_DATA = [
 		tech: ["Framer Motion"],
 	},
 	{
-		id: 9,
+		id: crypto.randomUUID(),
 		title: "Smooth Parallax Scroll",
 		link: "/scroll/smooth-parallax-scroll",
 		category: "scroll",
@@ -106,7 +106,7 @@ const PROJECTS_DATA = [
 		tech: ["Framer Motion", "Lenis Scroll"],
 	},
 	{
-		id: 10,
+		id: crypto.randomUUID(),
 		title: "Split Vignette",
 		link: "/cursor/split-vignette",
 		category: "cursor",
@@ -115,13 +115,22 @@ const PROJECTS_DATA = [
 		tech: ["Framer Motion", "CSS Clip Path"],
 	},
 	{
-		id: 11,
+		id: crypto.randomUUID(),
 		title: "SVG Morph",
 		link: "/animation/svg-morph",
 		category: "animation",
 		description: "An SVG morphing animation that transforms shapes smoothly",
 		difficulty: "Intermediate",
 		tech: ["Framer Motion", "Flubber.js"],
+	},
+	{
+		id: crypto.randomUUID(),
+		title: "Sticky Cursor",
+		link: "/cursor/sticky-cursor",
+		category: "cursor",
+		description: "A sticky cursor effect that follows the mouse with a delay",
+		difficulty: "Intermediate",
+		tech: ["Framer Motion", "Trignometry"],
 	},
 ];
 
