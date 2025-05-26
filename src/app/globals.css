@@ -13,7 +13,6 @@
 
 body {
 	background-color: var(--dark-bg);
-	color: var(--text-color);
 	font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
 	overflow-x: hidden;
 }

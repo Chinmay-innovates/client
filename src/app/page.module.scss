@@ -7,7 +7,6 @@ $color-text: #0f172a;
 $color-text-muted: #64748b;
 $color-text-light: #94a3b8;
 $color-accent: #6366f1;
-$color-accent-hover: #4f46e5;
 $color-border: #e2e8f0;
 $color-border-light: #f1f5f9;
 $color-white: #ffffff;
@@ -16,7 +15,6 @@ $color-warning: #f59e0b;
 $color-error: #ef4444;
 
 // Gradient definitions
-$gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 $gradient-accent: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
 $gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
 $gradient-hover: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%);
@@ -40,16 +38,6 @@ $gradient-hover: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%);
 	$timing: cubic-bezier(0.4, 0, 0.2, 1)
 ) {
 	transition: $properties $duration $timing;
-}
-
-@mixin focus-ring($color: $color-accent) {
-	&:focus {
-		outline: none;
-		box-shadow: 0 0 0 3px rgba($color, 0.5);
-		&:hover {
-			box-shadow: 0 0 0 3px rgba($color, 0.7);
-		}
-	}
 }
 
 @mixin glass-effect {
@@ -97,15 +85,6 @@ $gradient-hover: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%);
 	}
 	50% {
 		opacity: 0.7;
-	}
-}
-
-@keyframes shimmer {
-	0% {
-		background-position: -200px 0;
-	}
-	100% {
-		background-position: calc(200px + 100%) 0;
 	}
 }
 
