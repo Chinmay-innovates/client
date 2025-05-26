@@ -105,6 +105,15 @@ const PROJECTS_DATA = [
 		difficulty: "Intermediate",
 		tech: ["Framer Motion", "Lenis Scroll"],
 	},
+	{
+		id: 10,
+		title: "Split Vignette",
+		link: "/cursor/split-vignette",
+		category: "cursor",
+		description: "A split vignette effect that follows the cursor",
+		difficulty: "Beginner",
+		tech: ["Framer Motion", "CSS Clip Path"],
+	},
 ];
 
 export {

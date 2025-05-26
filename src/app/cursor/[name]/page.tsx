@@ -1,5 +1,6 @@
 import MouseScaleImageGallery from "@/components/mouse-scale-image-gallery";
 import MaskCursorEffect from "@/components/mask-cursor-effect";
+import SplitVignette from "@/components/split-vignette";
 interface Props {
 	params: Promise<{
 		name: string;
@@ -13,6 +14,9 @@ const page = async ({ params }: Props) => {
 	}
 	if (name === "mask-cursor-effect") {
 		return <MaskCursorEffect />;
+	}
+	if (name === "split-vignette") {
+		return <SplitVignette />;
 	}
 
 	return (
