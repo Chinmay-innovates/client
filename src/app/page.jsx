@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useMemo, useCallback } from "react";
+import { useQueryState } from "nuqs";
 import style from "./page.module.scss";
 import { PROJECTS_DATA } from "@/data";
 import {
@@ -14,58 +15,80 @@ import {
 const ITEMS_PER_PAGE = 6;
 
 const categories = [...new Set(PROJECTS_DATA.map((p) => p.category))];
-export default function Home() {
-	const [searchTerm, setSearchTerm] = useState("");
-	const [selectedCategory, setSelectedCategory] = useState("");
-	const [currentPage, setCurrentPage] = useState(1);
 
-	const handleCategoryChange = useCallback((e) => {
-		setSelectedCategory(e.target.value);
-		setCurrentPage(1);
-	}, []);
+const DEFAULT_SEARCH = "";
+const DEFAULT_CATEGORY = "";
+const DEFAULT_PAGE = "1";
+
+export default function Home() {
+	const [searchTerm, setSearchTerm] = useQueryState("q", {
+		defaultValue: DEFAULT_SEARCH,
+		clearOnDefault: true,
+	});
+	const [selectedCategory, setSelectedCategory] = useQueryState("category", {
+		defaultValue: DEFAULT_CATEGORY,
+		clearOnDefault: true,
+	});
+	const [currentPage, setCurrentPage] = useQueryState("page", {
+		defaultValue: DEFAULT_PAGE,
+		clearOnDefault: true,
+	});
+
+	// Parse page number from string query param
+	const currentPageNumber = useMemo(
+		() => parseInt(currentPage, 10) || DEFAULT_PAGE,
+		[currentPage]
+	);
+
+	const handleSearchChange = useCallback(
+		(e) => {
+			setSearchTerm(e.target.value);
+			setCurrentPage(DEFAULT_PAGE);
+		},
+		[setSearchTerm, setCurrentPage]
+	);
+
+	const handleClearSearch = useCallback(() => {
+		setSearchTerm(DEFAULT_SEARCH);
+		setCurrentPage(DEFAULT_PAGE);
+	}, [setSearchTerm, setCurrentPage]);
+
+	const handleCategoryChange = useCallback(
+		(e) => {
+			setSelectedCategory(e.target.value);
+			setCurrentPage(DEFAULT_PAGE);
+		},
+		[setSelectedCategory, setCurrentPage]
+	);
 
 	const filteredProjects = useMemo(() => {
 		let filtered = PROJECTS_DATA;
 
-		if (searchTerm) {
+		if (searchTerm !== DEFAULT_SEARCH) {
+			const term = searchTerm.toLowerCase();
 			filtered = filtered.filter(
 				(project) =>
-					project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					project.description
-						.toLowerCase()
-						.includes(searchTerm.toLowerCase()) ||
-					project.tech.some((tech) =>
-						tech.toLowerCase().includes(searchTerm.toLowerCase())
-					) ||
-					project.difficulty.toLowerCase().includes(searchTerm.toLowerCase())
+					project.title.toLowerCase().includes(term) ||
+					project.description.toLowerCase().includes(term) ||
+					project.tech.some((tech) => tech.toLowerCase().includes(term)) ||
+					project.difficulty.toLowerCase().includes(term)
 			);
 		}
 
-		if (selectedCategory) {
+		if (selectedCategory !== DEFAULT_CATEGORY) {
 			filtered = filtered.filter(
 				(project) => project.category === selectedCategory
 			);
 		}
 
-		return filtered.sort((a, b) => {
-			return a.title.localeCompare(b.title);
-		});
+		return filtered.sort((a, b) => a.title.localeCompare(b.title));
 	}, [searchTerm, selectedCategory]);
 
-	const handleSearchChange = useCallback((e) => {
-		setSearchTerm(e.target.value);
-		setCurrentPage(1);
-	}, []);
-
-	const handleClearSearch = useCallback(() => {
-		setSearchTerm("");
-		setCurrentPage(1);
-	}, []);
-
+	// Paginate filtered projects
 	const paginatedProjects = useMemo(() => {
-		const start = (currentPage - 1) * ITEMS_PER_PAGE;
+		const start = (currentPageNumber - 1) * ITEMS_PER_PAGE;
 		return filteredProjects.slice(start, start + ITEMS_PER_PAGE);
-	}, [filteredProjects, currentPage]);
+	}, [filteredProjects, currentPageNumber]);
 
 	const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
 
@@ -141,20 +164,22 @@ export default function Home() {
 						{totalPages > 1 && (
 							<div className={style.pagination}>
 								<button
-									disabled={currentPage === 1}
-									onClick={() => setCurrentPage((p) => p - 1)}
+									disabled={currentPageNumber <= 1}
+									onClick={() => setCurrentPage(String(currentPageNumber - 1))}
 									className={style.pagination_button}
 								>
 									Previous
 								</button>
 								<div className={style.pagination_info}>
-									<span className={style.current_page}>{currentPage}</span>
+									<span className={style.current_page}>
+										{currentPageNumber}
+									</span>
 									<span className={style.page_separator}>of</span>
 									<span className={style.total_pages}>{totalPages}</span>
 								</div>
 								<button
-									disabled={currentPage >= totalPages}
-									onClick={() => setCurrentPage((p) => p + 1)}
+									disabled={currentPageNumber >= totalPages}
+									onClick={() => setCurrentPage(String(currentPageNumber + 1))}
 									className={style.pagination_button}
 								>
 									Next
