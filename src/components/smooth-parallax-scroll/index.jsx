@@ -7,7 +7,7 @@ import Image from "next/image";
 
 import { images } from "@/data";
 import styles from "./style.module.scss";
-import { useDimensionn } from "@/app/hooks/use-dimensionn";
+import { useDimensionn } from "@/hooks/use-dimensionn";
 
 const COLUMN_CONFIG = [
 	{ images: [0, 1, 2], factor: 2 },

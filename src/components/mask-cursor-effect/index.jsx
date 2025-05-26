@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "./style.module.scss";
 import { motion } from "framer-motion";
-import useMousePosition from "@/app/hooks/use-mouse-position";
+import useMousePosition from "@/hooks/use-mouse-position";
 
 const Index = () => {
 	const [isHovered, setIsHovered] = useState(false);
